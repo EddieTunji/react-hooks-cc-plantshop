@@ -1,6 +1,10 @@
 import React from "react";
 
-function Search() {
+function Search({ searchQuery, setSearchQuery }) {
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value); // Updates the search query in App.js state
+  };
+
   return (
     <div className="searchbar">
       <label htmlFor="search">Search Plants:</label>
@@ -8,7 +12,8 @@ function Search() {
         type="text"
         id="search"
         placeholder="Type a name to search..."
-        onChange={(e) => console.log("Searching...")}
+        value={searchQuery} // Keeps the input field in sync with the searchQuery state
+        onChange={handleSearchChange} // Updates the searchQuery as the user types
       />
     </div>
   );
